@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS manufacturer( manufacturer_country TEXT, car_mark TEXT PRIMARY KEY)
+CREATE TABLE IF NOT EXISTS available_cars( car_mark TEXT, car_model TEXT,  PRIMARY KEY (car_mark, car_model))
+CREATE TABLE IF NOT EXISTS clients_orders( order_id TEXT PRIMARY KEY, car_model TEXT)
+CREATE TABLE IF NOT EXISTS sanction_countries( manufacturer_country TEXT PRIMARY KEY)
