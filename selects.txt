@@ -1,0 +1,18 @@
+SELECT clients_orders.order_id, clients_orders.car_model, available_cars.car_mark 
+FROM clients_orders 
+LEFT JOIN available_cars 
+ON clients_orders.car_model = available_cars.car_model
+#новая таблица с запросами людей, где у модел машины есть марка
+
+
+
+SELECT clients_orders.order_id, available_cars.car_model, available_cars.car_mark, manufacturer.manufacturer_country FROM available_cars
+LEFT JOIN manufacturer ON  available_cars.car_mark = manufacturer.car_mark 
+INNER JOIN clients_orders ON clients_orders.car_model = available_cars.car_model
+#новая таблица из 3 таблиц, где у каждого заказа есть модель машины, марка и страна производитель 
+
+SELECT clients_orders.order_id, available_cars.car_model, available_cars.car_mark, manufacturer.manufacturer_country FROM available_cars, sanction_countries 
+LEFT JOIN manufacturer ON  available_cars.car_mark = manufacturer.car_mark 
+INNER JOIN clients_orders ON clients_orders.car_model = available_cars.car_model 
+WHERE manufacturer.manufacturer_country != sanction_countries.manufacturer_country
+#новая таблица, где заказы без санкционных машин 
